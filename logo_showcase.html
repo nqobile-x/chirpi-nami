@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chirpi Nami • Master Brand Logo & Motion Graphics</title>
+    <style>
+        :root {
+            --volcanic-umber: #141312;
+            --milled-graphite: #1C1A18;
+            --elevated-charcoal: #24211E;
+            --hairline-stone: #2E2A25;
+            --kalahari-terracotta: #C8532F;
+            --raw-ochre: #D48B28;
+            --desert-sage: #4A7C59;
+            --bone-white: #F5EFEB;
+            --muted-dust: #A1998E;
+            --subdued-ash: #6E6860;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--volcanic-umber);
+            color: var(--bone-white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px;
+            overflow-x: hidden;
+        }
+
+        .showcase-container {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .brand-header {
+            margin-bottom: 32px;
+        }
+
+        .brand-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: inline-flex;
+            align-items: baseline;
+        }
+
+        .brand-header h1 span {
+            color: var(--kalahari-terracotta);
+            font-weight: 300;
+        }
+
+        .brand-header p {
+            color: var(--muted-dust);
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        /* 3D Perspective Card Container */
+        .stage-box {
+            perspective: 1000px;
+            width: 100%;
+        }
+
+        .canvas-card {
+            width: 100%;
+            height: 380px;
+            background: var(--milled-graphite);
+            border: 1px solid var(--hairline-stone);
+            border-radius: 28px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+            transition: transform 0.15s ease-out, box-shadow 0.2s ease-out;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        /* Viewfinder Fine Reticle Corners */
+        .reticle {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-color: var(--subdued-ash);
+            border-style: solid;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        .reticle-tl { top: 20px; left: 20px; border-width: 1.5px 0 0 1.5px; }
+        .reticle-tr { top: 20px; right: 20px; border-width: 1.5px 1.5px 0 0; }
+        .reticle-bl { bottom: 20px; left: 20px; border-width: 0 0 1.5px 1.5px; }
+        .reticle-br { bottom: 20px; right: 20px; border-width: 0 1.5px 1.5px 0; }
+
+        /* The Animated Logo Anchor */
+        .logo-wrapper {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: flightFloat 3.2s ease-in-out infinite alternate;
+            transform-origin: center center;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes flightFloat {
+            0% {
+                transform: translateY(-8px) rotate(-1.5deg);
+            }
+            100% {
+                transform: translateY(8px) rotate(1.5deg);
+            }
+        }
+
+        /* Concentric Acoustic Waves */
+        .acoustic-wave {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid var(--kalahari-terracotta);
+            pointer-events: none;
+            animation: pulseWave 4s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+        }
+
+        .wave-1 {
+            width: 180px;
+            height: 180px;
+            animation-delay: 0s;
+        }
+
+        .wave-2 {
+            width: 240px;
+            height: 240px;
+            border-color: var(--raw-ochre);
+            animation-delay: 1.2s;
+        }
+
+        .wave-3 {
+            width: 300px;
+            height: 300px;
+            border-color: var(--hairline-stone);
+            animation-delay: 2.4s;
+        }
+
+        @keyframes pulseWave {
+            0% {
+                transform: scale(0.65);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.35);
+                opacity: 0;
+            }
+        }
+
+        svg.logo-svg {
+            width: 160px;
+            height: 160px;
+            filter: drop-shadow(0 12px 24px rgba(200, 83, 47, 0.25));
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 2;
+        }
+
+        .blueprint-circle {
+            fill: none;
+            stroke: var(--subdued-ash);
+            stroke-width: 0.6;
+            stroke-dasharray: 2 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .blueprint-active .blueprint-circle {
+            opacity: 0.7;
+        }
+
+        /* Controls & Footnote */
+        .toolbar {
+            margin-top: 24px;
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn {
+            background: var(--elevated-charcoal);
+            color: var(--bone-white);
+            border: 1px solid var(--hairline-stone);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            border-color: var(--kalahari-terracotta);
+            color: var(--kalahari-terracotta);
+        }
+
+        .btn.active {
+            background: var(--kalahari-terracotta);
+            color: var(--bone-white);
+            border-color: var(--kalahari-terracotta);
+        }
+
+        .security-badge {
+            margin-top: 28px;
+            display: inline-flex;
+            align-items: center;
+            background: var(--elevated-charcoal);
+            border: 1px solid var(--hairline-stone);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            color: var(--bone-white);
+        }
+
+        .security-badge .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--desert-sage);
+            margin-right: 8px;
+        }
+
+        .interactivity-hint {
+            margin-top: 14px;
+            font-size: 11px;
+            color: var(--subdued-ash);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="showcase-container">
+        
+        <div class="brand-header">
+            <h1>Chirpi<span> Nami</span></h1>
+            <p>THE ACOUSTIC SWIFT • INYONI YE-NAMI</p>
+        </div>
+
+        <div class="stage-box">
+            <div class="canvas-card" id="card">
+                <div class="reticle reticle-tl"></div>
+                <div class="reticle reticle-tr"></div>
+                <div class="reticle reticle-bl"></div>
+                <div class="reticle reticle-br"></div>
+
+                <!-- Acoustic Ripple Emitters -->
+                <div class="acoustic-wave wave-1"></div>
+                <div class="acoustic-wave wave-2"></div>
+                <div class="acoustic-wave wave-3"></div>
+
+                <div class="logo-wrapper" id="logoWrapper">
+                    <svg class="logo-svg" viewBox="0 0 100 100" id="logoSvg">
+                        <!-- Geometric Construction Blueprint Circles (Toggleable) -->
+                        <g id="blueprintGroup">
+                            <circle class="blueprint-circle" cx="55" cy="45" r="38" />
+                            <circle class="blueprint-circle" cx="42" cy="52" r="28" />
+                            <circle class="blueprint-circle" cx="64" cy="38" r="22" />
+                            <circle class="blueprint-circle" cx="30" cy="58" r="18" />
+                        </g>
+
+                        <!-- Secondary Resonance Wave: Raw Ochre -->
+                        <path fill="#D48B28" d="M30,32 C38,24 50,18 64,16 C67,16 70,16.2 72,16.6 C66,19 60,23 54,28 C44,36 36,46 30,58 C29,54 29,42 30,32 Z" />
+
+                        <!-- Primary Soaring Swift Silhouette: Kalahari Terracotta -->
+                        <path fill="#C8532F" d="M84,22 C78,19 68,18 56,21 C40,25 26,34 14,46 C24,42 36,40 48,42 C38,50 30,62 22,78 C32,68 44,60 58,56 C48,66 42,78 36,92 C46,80 58,70 72,64 C82,59 90,52 94,42 C96,36 94,28 88,24 C87,23 85.5,22.5 84,22 Z" />
+
+                        <!-- Focal Beacon Core: Bone White with Stone Rim -->
+                        <circle cx="84" cy="31" r="2.8" fill="#F5EFEB" />
+                        <circle cx="84" cy="31" r="1.2" fill="#141312" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="toolbar">
+            <button class="btn" id="blueprintBtn" onclick="toggleBlueprint()">Geometric Blueprint</button>
+            <button class="btn" id="pulseBtn" onclick="triggerPulse()">Simulate Ping</button>
+        </div>
+
+        <div class="security-badge">
+            <div class="dot"></div>
+            SELF-SOVEREIGN • SIGNAL DOUBLE RATCHET
+        </div>
+
+        <div class="interactivity-hint">
+            MOVE CURSOR OR FINGER TO TILT 3D PARALLAX • TAP TO EMIT PULSE
+        </div>
+
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        const logo = document.getElementById('logoWrapper');
+        const blueprintBtn = document.getElementById('blueprintBtn');
+        let blueprintActive = false;
+
+        // 3D Parallax Mouse Tracking
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            const rotateX = (-y / rect.height) * 22;
+            const rotateY = (x / rect.width) * 22;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        });
+
+        // Tap Pulse Spring
+        card.addEventListener('click', () => {
+            triggerPulse();
+        });
+
+        function triggerPulse() {
+            logo.style.transform = 'scale(0.88)';
+            setTimeout(() => {
+                logo.style.transform = 'scale(1.08)';
+                setTimeout(() => {
+                    logo.style.transform = '';
+                }, 180);
+            }, 120);
+        }
+
+        function toggleBlueprint() {
+            blueprintActive = !blueprintActive;
+            card.classList.toggle('blueprint-active', blueprintActive);
+            blueprintBtn.classList.toggle('active', blueprintActive);
+        }
+    </script>
+</body>
+</html>

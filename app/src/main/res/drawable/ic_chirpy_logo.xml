@@ -1,0 +1,25 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="128dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Chirpy-NAMi Master Logo: The Acoustic Swift (Inyoni ye-NAMi) -->
+    <!-- Geometric pure arcs: Soaring migratory bird + Interlocking acoustic wave -->
+
+    <!-- Primary Soaring Wing & Crown (Kalahari Terracotta) -->
+    <path
+        android:fillColor="#C8532F"
+        android:pathData="M84,22 C78,19 68,18 56,21 C40,25 26,34 14,46 C24,42 36,40 48,42 C38,50 30,62 22,78 C32,68 44,60 58,56 C48,66 42,78 36,92 C46,80 58,70 72,64 C82,59 90,52 94,42 C96,36 94,28 88,24 C87,23 85.5,22.5 84,22 Z" />
+
+    <!-- Secondary Acoustic Resonance Wave / NAMi Arc (Raw Ochre) -->
+    <path
+        android:fillColor="#D48B28"
+        android:pathData="M30,32 C38,24 50,18 64,16 C67,16 70,16.2 72,16.6 C66,19 60,23 54,28 C44,36 36,46 30,58 C29,54 29,42 30,32 Z" />
+
+    <!-- Pulse Focal Beacon (Bone White Core) -->
+    <path
+        android:fillColor="#F5EFEB"
+        android:pathData="M84,34 A3,3 0 1,1 84,28 A3,3 0 1,1 84,34 Z" />
+
+</vector>

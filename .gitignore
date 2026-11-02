@@ -1,0 +1,24 @@
+# Build output
+.gradle/
+.kotlin/
+build/
+app/build/
+*.apk
+*.aab
+build-log.txt
+
+# Machine-specific
+local.properties
+.idea/
+*.iml
+.DS_Store
+
+# Signing keys and secrets
+*.jks
+*.keystore
+keystore.properties
+google-services.json
+.env
+
+# Personal device screenshots
+device_screenshot*.png
